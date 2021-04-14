@@ -1,6 +1,6 @@
 import { Query, Resolver } from "@nestjs/graphql";
 import { Maintenance } from "../definitions/Maintenance.def";
-import { MaintenanceService } from "../service/Maintenance.service";
+import { MaintenanceService } from "../../dbmodule/service/Maintenance.service";
 
 @Resolver(of => Maintenance)
 export class MaintenanceResolver {

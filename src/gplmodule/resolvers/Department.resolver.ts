@@ -9,8 +9,8 @@ import {
 import { Department } from '../definitions/Department.def';
 import { Maintenance } from '../definitions/Maintenance.def';
 import { Project } from '../definitions/Project.def';
-import { DepartmentService } from '../service/Department.service';
-import { MaintenanceService } from '../service/Maintenance.service';
+import { DepartmentService } from '../../dbmodule/service/Department.service';
+import { MaintenanceService } from '../../dbmodule/service/Maintenance.service';
 @Resolver((of) => Department)
 export class DepartmentResolver {
   constructor(
