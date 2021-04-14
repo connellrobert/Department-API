@@ -4,6 +4,12 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
   description: 'The structure for maintenance requests for the departments',
 })
 export class Maintenance {
+  @Field({
+    nullable: false,
+    description: 'A unique title to help identify association with Departments',
+  })
+  title: string;
+
   @Field({ description: 'The date the maintenance request was submitted' })
   submission: Date;
 

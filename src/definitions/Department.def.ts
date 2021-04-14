@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Maintenance } from './Maintenance.def';
+import { Project } from './Project.def';
 
 @ObjectType({
   description:
@@ -8,14 +9,14 @@ import { Maintenance } from './Maintenance.def';
 export class Department {
   @Field({ nullable: false, description: 'The name of the department' })
   name: string;
-  @Field({
+  @Field(()=>[Project], {
     defaultValue: [],
     description:
-      "A list of project url's for gathering information about the projects by the department",
+      "A list of project url's for gathering information about the projects by the department"
   })
-  projects: string[];
+  projects: Project[];
 
-  @Field({
+  @Field(()=>[Maintenance],{
     defaultValue: [],
     description: 'A list of maintenance requests by this department',
   })
