@@ -1,4 +1,4 @@
-import { Query, Resolver } from "@nestjs/graphql";
+import { Args, Query, Resolver } from "@nestjs/graphql";
 import { Maintenance } from "../definitions/Maintenance.def";
 import { MaintenanceService } from "../../dbmodule/service/Maintenance.service";
 
@@ -7,7 +7,8 @@ export class MaintenanceResolver {
     constructor(private mainService: MaintenanceService){}
 
     @Query((returns) => Maintenance)
-    findAll(page:number, offset: number):Promise<Maintenance[]>{
+    findAll(
+        @Args('page', {type: () => Number}) page:number, @Args('offset', {type: () => Number}) offset: number):Promise<Maintenance[]>{
         return this.mainService.findAll(page, offset);
     }
 }

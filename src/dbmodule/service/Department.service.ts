@@ -13,9 +13,11 @@ export class DepartmentService {
   findByName(name: string): Promise<Department> {
     return this.department.findOne({
       where: {
-        attribute: 'name',
-        logic: '==',
-        val: name,
+        comparator: {
+          attribute: 'name',
+          logic: '==',
+          val: name,
+        }
       },
     });
   }

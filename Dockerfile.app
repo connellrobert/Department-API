@@ -2,4 +2,18 @@ FROM node:14
 WORKDIR /app
 COPY . /app
 RUN npm ci && npm run build
-ENTRYPOINT ["node","dist/main"]
+
+FROM node:14
+COPY --from=0 /app/dist /app
+COPY --from=0 /app/package.json /app
+WORKDIR /app
+ENV NODE_ENV=prod
+RUN npm install
+# store environment variables for DATASOURCE_HOST, DATASOURCE_PORT, DATASOURCE_USERNAME, DATASOURCE_PASSWORD, DATASOURCE_DATABASE, PORT
+ENV DATASOURCE_HOST=172.17.0.2
+ENV DATASOURCE_PORT=3306
+ENV DATASOURCE_USERNAME=root
+ENV DATASOURCE_PASSWORD=password
+ENV DATASOURCE_DATABASE=test
+ENV PORT=3000
+ENTRYPOINT ["node", "main"]

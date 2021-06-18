@@ -21,9 +21,11 @@ export class MaintenanceService {
     findByTitle(title:string):Promise<Maintenance[]>{
         return this.maintenance.findAll({
             where:{
-                attribute:"title",
-                logic: "==",
-                val: title
+                comparator: {
+                    attribute:"title",
+                    logic: "==",
+                    val: title
+                }
             }
         })
     }
