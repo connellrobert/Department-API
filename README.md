@@ -25,4 +25,5 @@ or
 5. ENV PORT
 
 ## WIP
+- [ ] Create endpoints for crud capabilities
 - [X] Create configuration for passing db location into app startup
